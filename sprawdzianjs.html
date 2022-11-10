@@ -79,6 +79,18 @@
               background-color: lightblue;
               margin: 2px;
             }
+            
+            .blok5, .blok6{
+              width: 100px;
+              height: 100px;
+              background-image: linear-gradient(to left,red 50%, blue 100%);
+              position: absolute;
+            }
+           .field{
+             width: 100vw;
+             height: 100vw;
+             position:relative;
+           }
         </style>
         <script type="text/javascript" src="jquery.js"></script>
         <script type="text/javascript" src="jquery.validate.js"></script>
@@ -134,7 +146,19 @@
                     $(this).next("p").slideToggle(1000);
                 });
 
-                
+
+             //animacja dwa bloki 
+                $('.blok5, .blok6').click(function(){
+                  $('.blok5').animate({top: "75vw"}, 2000, "linear", function(){
+                    
+                      $('.blok5').animate({top: "0px"}, 2000, "swing");
+                  });
+                  
+                  $('.blok6').animate({left: "75vw"}, 2000, "linear", function(){
+                 
+                    $('.blok6').animate({left: "0px"}, 2000, "swing");
+                  });});
+               
         });
 
 </script>
@@ -181,6 +205,12 @@
         <li>ROBIMY</li>
         <p>Kozak nuta</p>
     </ul>
+        <hr>
+        <div class="field">
+          <div class="blok5"></div>
+          <div class="blok6"></div>
+        </div>
+        <hr>
         
     </body>
 </html>
