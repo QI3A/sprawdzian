@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            *{
+               
+            }
+            body{
+                font-size: 1.3rem;
+            }
+            .zad1 li{
+                background-color: rgb(73, 73, 201);
+                width: 200px;
+            }
+            ul{
+                border: 2px solid black;
+                width: 220px;
+                padding: 40px;
+            }
+           
+            .blok{
+                width: 200px;
+                height: 200px;
+                background-color: blue;
+               
+            }
+
+            .blok2{
+                width: 100px;
+                height: 100px;
+                background-color: rgb(63, 165, 181);
+                margin-top: 10px;
+              
+            }
+            .blok3{
+                width: 200px;
+                height: 200px;
+                background-color: rgb(38, 78, 84);
+                margin-top: 20px;
+             
+            }
+            .blok4{
+                width: 200px;
+                height: 100px;
+                background-color: rgb(217, 45, 148);
+            }
+            div{
+                color: white;
+            }
+            .btn1{
+                width: 100px;
+                height: 50px;
+             
+                margin: 10px 40px;
+            }
+            form input{
+                margin: 10px 0;
+            }
+            form p {
+                display: inline-flex;
+                width: 100px;
+                margin: 2px;
+            }
+            fieldset{
+                width: 50vw;
+            }
+
+            .lista p{
+                display: none;
+            }
+
+            .lista{
+                list-style-type: none;
+            }
+            .lista li{
+              background-color: lightblue;
+              margin: 2px;
+            }
+        </style>
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="jquery.validate.js"></script>
+        <script type="text/javascript">
+
+            //Mówimy jquery że ma się słuchać jak pies
+            $(document).ready(function(){
+ 
+
+                //Zmiana koloru parzystych li
+             $(".zad1 li:odd").css("background-color", "rgb(137, 137, 232)");
+
+
+
+             //Po najechaniu zmienia kolor i wraca
+             $('.blok').hover(function(){
+                $(this).css("background-color", "red")
+             },function(){
+                $(this).css("background-color", "blue")
+            });
+
+
+            //Animacja animate
+            $('.blok2').click(function(){
+                $(this).animate({width: "200px", height: "200px"}, 2000, function()
+                {
+                    //Co ma się wykonać po animacji
+                    alert("Koniec Animacji Kotku");
+                })
+            });
+
+            //Prosta animacja z przyciskiem (slideToggle lub slideDown itd.)
+            $('.btn1').click(function(){
+                $('.blok3').slideToggle("slow")
+            });
+
+            //Szukajcie aż znajdziecie
+                $('.blok4').hover(function(){
+
+                $(this).find('p').html("Funkcja find");
+                $(this).next().html("Funkcja next");
+            });
+
+            //Validacja
+                $('.btn2').click(function(){
+                    $('#formularz').validate();
+                    console.log("dziala");
+
+                });
+
+            //Lista z rozwijaniem
+                $(".lista li").click(function(){
+                    $(this).next("p").slideToggle(1000);
+                });
+
+                
+        });
+
+</script>
+    </head>
+    <body>
+
+        <ul class="zad1">
+            <li>Nieparzyste</li>
+            <li>Parzyste</li>
+            <li>Nieparzyste</li>
+            <li>Parzyste</li>
+            <li>Nieparzyste</li>
+            <li>Parzyste</li>
+        </ul>
+        <hr>
+        <div class="blok">Najedź żeby zmienić kolor</div><hr>
+        <div class="blok2">Kliknij żeby animować</div><hr>
+        <div class="blok3">Animacja prostszym sposobem</div><button class="btn1">Rozwiń / Zwiń</button><hr>
+        <div class="blok4">
+            <p>Najedź na mnie</p>
+        </div>
+        <p>Niespodzianka</p>
+        <hr>
+        <form id="formularz">
+            <fieldset>
+                <p>Imię:</p><input type="text" name="imie" id="imie" class="required" minlength="3"><br>
+                <p>Nazwisko:</p><input type="text" name="nazwisko" id="nazwisko" class="required" minlength="3"><br>
+                <p>Email:</p><input type="text" name="email" id="email" class="required email"><br>
+                <p>Wiek:</p><input type="text" name="wiek" id="wiek" class="required number" min="18" max="120"><br>
+                <input type="submit" class="btn2">
+            </fieldset>
+        </form>
+     <hr>
+    <h2>Rozijana Lista</h2>
+    <ul class="lista">
+        <li>DYMY</li>
+        <p>Kozak nuta</p>
+        <li>DYMY</li>
+        <p>Kozak nuta</p>
+        <li>DYMY</li>
+        <p>Kozak nuta</p>
+        <li>DO RANA</li>
+        <p>Kozak nuta</p>
+        <li>ROBIMY</li>
+        <p>Kozak nuta</p>
+    </ul>
+        
+    </body>
+</html>
